@@ -136,10 +136,10 @@ export default function CourseSelection() {
                 <div className="w-full">
                     <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
                         <TabsList className="w-full flex flex-col sm:flex-row">
-                            <TabsTrigger value="step1" className="w-full sm:w-auto flex-1 text-md">
+                            <TabsTrigger value="step1" className="w-full sm:w-auto flex-1 text-lg">
                                 Step 01- Pick Your Perfect Ride
                             </TabsTrigger>
-                            <TabsTrigger value="step2" className="w-full sm:w-auto flex-1 text-md">
+                            <TabsTrigger value="step2" className="w-full sm:w-auto flex-1 text-lg">
                                 Step 02- Choose Course
                             </TabsTrigger>
                         </TabsList>
