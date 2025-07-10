@@ -20,16 +20,18 @@ export default function CourseSelection() {
     const gstRate = 0.18
     const gstAmount = Math.round(programPrice * gstRate)
     const subtotal = programPrice
-    const total = 7600 
+    const total = 7600
 
     return (
         <div className="max-w-4xl mx-auto p-6 space-y-8 font-[Montserrat] ">
             {/* Header Section */}
             <div className="text-center space-y-4">
-                <div className="text-red-500 font-medium tracking-wider text-[18px]">
-                    SER<span className="text-gray-400">VICES</span>
+                <div className="font-medium tracking-wider text-[18px]">
+                    <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent font-[Anybody] font-bold">
+                        SERVICES
+                    </span>
                 </div>
-                <h1 className="font-[Montserrat] text-3xl md:text-[24px] font-bold text-gray-900">Start Your Two-Wheeler Training with Ease!</h1>
+                <h1 className="text-3xl md:text-[24px] font-bold text-gray-900 font-[Anybody]">Start Your Two-Wheeler Training with Ease!</h1>
                 <p className="text-black max-w-3xl mx-auto leading-relaxed text-[18px]">
                     Get on the road with confidence by choosing the perfect training options tailored to your needs. Follow these
                     simple steps to customize your learning journey and master two-wheeler riding effortlessly.
@@ -55,7 +57,7 @@ export default function CourseSelection() {
                             {/* Main Course Selection Card */}
                             <Card className="bg-[#F2EAEA] border-0 mt-5 md:mt-0">
                                 <CardContent className="py-2 px-4  space-y-6">
-                                    <h2 className="text-2xl font-bold text-gray-700 text-center mb-8">Choose Your Perfect Course</h2>
+                                    <h2 className="text-2xl font-bold text-gray-700 text-center mb-8 font-[Anybody] ">Choose Your Perfect Course</h2>
 
                                     <div className="space-y-4">
                                         {/* Beginner Blast Course */}
@@ -66,7 +68,7 @@ export default function CourseSelection() {
                                                         <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
                                                             {selectedCourse === "beginner" && (
                                                                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                                                                    <path d="M5.5 8.5L7.5 10.5L11 7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                                                    <path d="M5.5 8.5L7.5 10.5L11 7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                                                 </svg>
                                                             )}
                                                             {/* <div className="w-2 h-2 bg-white rounded-full"></div> */}
@@ -107,7 +109,7 @@ export default function CourseSelection() {
                                                         >
                                                             <div className="flex items-center space-x-3">
                                                                 <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">DAY 2</span>
-                                                             <span className="text-sm md:text-lg text-white font-medium">
+                                                                <span className="text-sm md:text-lg text-white font-medium">
                                                                     Getting in Gear —<span className="block md:inline"> Mastering the Basics</span>
                                                                 </span>
                                                             </div>
@@ -117,7 +119,7 @@ export default function CourseSelection() {
                                                         <div className="bg-[#FF8D8D] rounded-lg p-4 flex items-center justify-between">
                                                             <div className="flex items-center space-x-3">
                                                                 <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">DAY 1</span>
-                                                              <span className="text-sm md:text-lg text-white font-medium">
+                                                                <span className="text-sm md:text-lg text-white font-medium">
                                                                     Getting in Gear —<span className="block md:inline"> Mastering the Basics</span>
                                                                 </span>
                                                             </div>
@@ -228,7 +230,7 @@ export default function CourseSelection() {
                                                 <span className="text-gray-600">Subtotal</span>
                                                 <span className="text-gray-800">₹{subtotal.toLocaleString()}</span>
                                             </div>
-                                                                                    <hr className="bg-gray-950 border-gray-300" />
+                                            <hr className="bg-gray-950 border-gray-300" />
 
                                             <div className="flex justify-between items-center text-lg font-bold border-t border-gray-200 pt-3">
                                                 <span className="text-gray-800">Total</span>
