@@ -28,72 +28,36 @@ export default function CourseSelection() {
             name: "Beginner Blast",
             sessions: 10,
             price: 8500,
-            description: "Perfect for first-time riders. Master the basics in 10 comprehensive sessions.",
+            description: "Basics in 10 sessions.",
             days: [
-                {
-                    day: 1,
-                    title: "Getting in Gear — Mastering the Basics",
-                    description: "Learn bike controls, balance, and starting/stopping techniques"
-                },
-                {
-                    day: 2,
-                    title: "Slow Speed Maneuvers",
-                    description: "Practice clutch control, slow riding, and tight turns"
-                },
-                {
-                    day: 3,
-                    title: "Shifting Gears Smoothly",
-                    description: "Master gear shifting patterns and rev matching"
-                },
-                {
-                    day: 4,
-                    title: "Turning and Cornering",
-                    description: "Learn proper body positioning and turning techniques"
-                },
-                {
-                    day: 5,
-                    title: "Emergency Braking",
-                    description: "Master quick stops in various road conditions"
-                }
+                { day: 1, title: "Getting in Gear" },
+                { day: 2, title: "Slow Speed" },
+                { day: 3, title: "Shifting Gears" },
+                { day: 4, title: "Turning" },
+                { day: 5, title: "Braking" }
             ]
         },
         advanced: {
             name: "Advanced Ace",
             sessions: 5,
             price: 6000,
-            description: "For riders with basic skills looking to refine their technique.",
+            description: "Refine your technique.",
             days: [
-                {
-                    day: 1,
-                    title: "Advanced Braking Techniques",
-                    description: "Learn emergency braking and trail braking"
-                },
-                {
-                    day: 2,
-                    title: "Cornering Mastery",
-                    description: "Perfect your body positioning and line selection"
-                },
-                {
-                    day: 3,
-                    title: "Highway Riding Skills",
-                    description: "Learn safe techniques for highway speeds"
-                },
-                {
-                    day: 4,
-                    title: "Night Riding",
-                    description: "Master riding in low-light conditions"
-                }
+                { day: 1, title: "Braking" },
+                { day: 2, title: "Cornering" },
+                { day: 3, title: "Highway Skills" },
+                { day: 4, title: "Night Riding" }
             ]
         },
         custom: {
             name: "Custom Course",
             sessions: "Flexible",
             price: 5000,
-            description: "Tailor-made sessions based on your specific needs and skill level.",
+            description: "Tailored sessions.",
             options: [
-                "Choose number of sessions",
-                "Select focus areas (city riding, highway, etc.)",
-                "Personalized coaching"
+                "Choose sessions",
+                "Select focus",
+                "Personal coaching"
             ]
         }
     }
@@ -203,10 +167,10 @@ export default function CourseSelection() {
                                             <Collapsible open={beginnerExpanded} onOpenChange={setBeginnerExpanded}>
                                                 <div className="flex items-center justify-between mb-6">
                                                     <div
-                                                        className="flex items-center space-x-3 cursor-pointer"
+                                                        className="flex items-center space-x-5 cursor-pointer"
                                                         onClick={() => handleCourseSelect("beginner")}
                                                     >
-                                                        <div className={`w-6 h-6 rounded-full flex items-center justify-center 
+                                                        <div className={`w-9 h-6 rounded-full flex items-center justify-center 
                                                             ${selectedCourse === "beginner" ? "bg-red-500" : "border-2 border-red-300 bg-white"}`}>
                                                             {selectedCourse === "beginner" && <Check className="h-4 w-4 text-white" />}
                                                         </div>
@@ -239,7 +203,7 @@ export default function CourseSelection() {
                                                                             <span className="text-sm md:text-lg text-white font-medium">
                                                                                 {day.title}
                                                                             </span>
-                                                                            <p className="text-xs text-white opacity-90">{day.description}</p>
+                                                                        
                                                                         </div>
                                                                     </div>
                                                                     <CollapsibleTrigger asChild>
@@ -282,7 +246,7 @@ export default function CourseSelection() {
                                                             {selectedCourse === "advanced" && <Check className="h-4 w-4 text-white" />}
                                                         </div>
                                                         <span className="font-medium text-gray-800 text-[18px]">
-                                                            {courses.advanced.name} – <strong>{courses.advanced.sessions} Sessions to Perfection</strong>
+                                                            {courses.advanced.name} – <strong>{courses.advanced.sessions}<br></br> Sessions to Perfection</strong>
                                                         </span>
                                                     </div>
                                                     <CollapsibleTrigger asChild>
@@ -310,7 +274,7 @@ export default function CourseSelection() {
                                                                             <span className="text-sm md:text-lg text-white font-medium">
                                                                                 {day.title}
                                                                             </span>
-                                                                            <p className="text-xs text-white opacity-90">{day.description}</p>
+                                                                        
                                                                         </div>
                                                                     </div>
                                                                     <CollapsibleTrigger asChild>
