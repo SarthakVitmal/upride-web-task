@@ -81,7 +81,7 @@ export default function CourseSelection() {
     const basePrice = courses[selectedCourse].price
     const licenseFee = licenseAddon ? 2500 : 0
     const subtotal = basePrice + licenseFee
-    
+
     // Apply 10% discount if coupon is applied
     const discount = appliedCoupon === "LEARN10" ? subtotal * 0.1 : 0
     const gstRate = 0.18
@@ -124,7 +124,7 @@ export default function CourseSelection() {
             {/* Header Section */}
             <div className="text-center space-y-4">
                 <div className="font-medium tracking-wider text-[18px]">
-                        <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent font-[Anybody] font-bold">
+                    <span className="bg-gradient-to-r from-[#E42525] via-[#FFBFB2] to-[#E42525] bg-clip-text text-transparent font-[Anybody] font-bold">
                         SERVICES
                     </span>
                 </div>
@@ -152,7 +152,7 @@ export default function CourseSelection() {
                                 <CardContent className="py-6 px-4 text-center">
                                     <h2 className="text-2xl font-bold text-gray-700 mb-4 font-[Anybody]">Select Your Training Vehicle</h2>
                                     <p className="text-gray-700 mb-6">This would be the vehicle selection interface in a real implementation.</p>
-                                    <Button onClick={() => handleTabChange("step2")} className="bg-red-500 hover:bg-red-600 text-white">
+                                    <Button onClick={() => handleTabChange("step2")} className="bg-red-500 hover:bg-red-600 text-white cursor-pointer rounded-full px-6 py-5">
                                         Proceed to Course Selection <ArrowRight className="h-4 w-4 ml-1" />
                                     </Button>
                                 </CardContent>
@@ -169,7 +169,7 @@ export default function CourseSelection() {
                                         <div className="space-y-2">
                                             <Collapsible open={beginnerExpanded} onOpenChange={setBeginnerExpanded}>
                                                 <div className="flex items-center justify-between mb-6">
-                                                    <div 
+                                                    <div
                                                         className="flex items-center space-x-3 cursor-pointer"
                                                         onClick={() => handleCourseSelect("beginner")}
                                                     >
@@ -195,8 +195,8 @@ export default function CourseSelection() {
                                                                 key={day.day}
                                                                 className="rounded-xl p-4 flex items-center justify-between"
                                                                 style={{
-                                                                    background: index % 2 === 0 
-                                                                        ? "linear-gradient(90deg, #FF8D8D 0%, #FFEBEC 200%)" 
+                                                                    background: index % 2 === 0
+                                                                        ? "linear-gradient(90deg, #FF8D8D 0%, #FFEBEC 200%)"
                                                                         : "linear-gradient(90deg, #E73131 0%, #FFEBEC 200%)"
                                                                 }}
                                                             >
@@ -226,7 +226,7 @@ export default function CourseSelection() {
                                         <div className="space-y-2">
                                             <Collapsible open={advancedExpanded} onOpenChange={setAdvancedExpanded}>
                                                 <div className="flex items-center justify-between">
-                                                    <div 
+                                                    <div
                                                         className="flex items-center space-x-3 cursor-pointer"
                                                         onClick={() => handleCourseSelect("advanced")}
                                                     >
@@ -279,7 +279,7 @@ export default function CourseSelection() {
                                         <div className="space-y-2">
                                             <Collapsible open={customizeExpanded} onOpenChange={setCustomizeExpanded}>
                                                 <div className="flex items-center justify-between">
-                                                    <div 
+                                                    <div
                                                         className="flex items-center space-x-3 cursor-pointer"
                                                         onClick={() => handleCourseSelect("custom")}
                                                     >
@@ -315,7 +315,7 @@ export default function CourseSelection() {
                                     <div className="space-y-4 bg-[#F6DFDF] px-6 py-3 rounded-lg">
                                         <h3 className="font-bold text-gray-800 text-[20px]">Add-Ons</h3>
                                         <p className="text-gray-700 font-medium text-[18px]">Get Your 2W License — Drive with Confidence!</p>
-                                        <div 
+                                        <div
                                             className="flex items-center space-x-3 cursor-pointer"
                                             onClick={() => setLicenseAddon(!licenseAddon)}
                                         >
@@ -344,9 +344,9 @@ export default function CourseSelection() {
                                                     onChange={(e) => setCouponCode(e.target.value)}
                                                     className="flex-1 bg-[#EECFCF] border-gray-300 outline-none border-none focus:ring-0 focus:border-gray-300 text-gray-800"
                                                 />
-                                                <Button 
+                                                <Button
                                                     onClick={handleApplyCoupon}
-                                                    className="bg-red-500 hover:bg-red-600 text-white px-6 rounded-4xl"
+                                                    className="bg-red-500 hover:bg-red-600 text-white px-6 rounded-4xl cursor-pointer"
                                                 >
                                                     Apply <ArrowRight className="h-4 w-4 ml-1" />
                                                 </Button>
@@ -390,15 +390,15 @@ export default function CourseSelection() {
                             </Card>
 
                             {/* Navigation Buttons */}
-                            <div className="flex  pt-2">
-                                <Button 
+                            <div className="flex pt-2">
+                                <Button
                                     onClick={() => handleTabChange("step1")}
-                                    className="text-red-500 bg-inherit"
+                                    className="text-red-500 bg-inherit hover:bg-white cursor-pointer"
                                 >
                                     Back
                                 </Button>
-                                <Button 
-                                    className="bg-inherit text-gray-600"
+                                <Button
+                                    className="bg-inherit text-gray-600 hover:bg-white cursor-pointer"
                                     onClick={() => alert(`Proceeding to checkout with ${courses[selectedCourse].name} course. Total: ₹${total}`)}
                                 >
                                     Next
