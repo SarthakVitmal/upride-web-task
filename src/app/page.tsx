@@ -1,10 +1,10 @@
-import Header from "@/components/ui/custom-components/Header";
+import CourseSelection from "@/components/ui/custom-components/CourseSelection";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <Header/>
+      <CourseSelection/>
     </>
   );
 }

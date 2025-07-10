@@ -337,8 +337,8 @@ export default function CourseSelection() {
                                                         ))}
                                                     </ul>
                                                     <div className="mt-4">
-                                                        <Input placeholder="Enter your customization requests" className="mb-2" />
-                                                        <Button variant="outline">Submit Request</Button>
+                                                        <Input placeholder="Enter your customization requests" className="mb-2 outline-none border-none focus:ring-0 bg-[#EECFCF] rounded-full px-5 py-6 text-black" />
+                                                        <Button variant="outline" className="mt-3 rounded-full bg-red-500 text-white">Submit Request</Button>
                                                     </div>
                                                 </CollapsibleContent>
                                             </Collapsible>
