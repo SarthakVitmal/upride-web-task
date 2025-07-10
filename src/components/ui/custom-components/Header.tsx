@@ -40,11 +40,11 @@ export default function CourseSelection() {
             <div className="flex justify-center">
                 <div className="w-full">
                     <Tabs defaultValue="account" className="w-full">
-                        <TabsList className="w-full flex">
-                            <TabsTrigger value="step1" className="flex-1">
+                        <TabsList className="w-full flex flex-col sm:flex-row">
+                            <TabsTrigger value="step1" className="w-full sm:w-auto flex-1 text-md">
                                 Step 01- Pick Your Perfect Ride
                             </TabsTrigger>
-                            <TabsTrigger value="step2" className="flex-1">
+                            <TabsTrigger value="step2" className="w-full sm:w-auto flex-1 text-md">
                                 Step 02- Choose Course
                             </TabsTrigger>
                         </TabsList>
@@ -53,7 +53,7 @@ export default function CourseSelection() {
                         </TabsContent>
                         <TabsContent value="step2" className="p-0">
                             {/* Main Course Selection Card */}
-                            <Card className="bg-[#F2EAEA] border-0">
+                            <Card className="bg-[#F2EAEA] border-0 mt-5 md:mt-0">
                                 <CardContent className="py-2 px-4  space-y-6">
                                     <h2 className="text-2xl font-bold text-gray-700 text-center mb-8">Choose Your Perfect Course</h2>
 
@@ -64,7 +64,12 @@ export default function CourseSelection() {
                                                 <div className="flex items-center justify-between mb-6">
                                                     <div className="flex items-center space-x-3">
                                                         <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
-                                                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                                                            {selectedCourse === "beginner" && (
+                                                                <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                                                                    <path d="M5.5 8.5L7.5 10.5L11 7" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                                                </svg>
+                                                            )}
+                                                            {/* <div className="w-2 h-2 bg-white rounded-full"></div> */}
                                                         </div>
                                                         <span className="font-medium text-gray-800 text-[18px]">
                                                             Beginner Blast – <strong className="text-bold">10 Sessions to Mastery</strong>
@@ -86,8 +91,10 @@ export default function CourseSelection() {
                                                             }}
                                                         >
                                                             <div className="flex items-center space-x-3">
-                                                                <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-sm font-medium">DAY 1</span>
-                                                                <span className="text-white font-medium">Getting in Gear — Mastering the Basics</span>
+                                                                <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">DAY 1</span>
+                                                                <span className="text-sm md:text-lg text-white font-medium">
+                                                                    Getting in Gear —<span className="block md:inline"> Mastering the Basics</span>
+                                                                </span>
                                                             </div>
                                                             <ChevronDown className="h-4 w-4 text-white" />
                                                         </div>
@@ -99,16 +106,20 @@ export default function CourseSelection() {
                                                             }}
                                                         >
                                                             <div className="flex items-center space-x-3">
-                                                                <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-sm font-medium">DAY 1</span>
-                                                                <span className="text-white font-medium">Getting in Gear — Mastering the Basics</span>
+                                                                <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">DAY 2</span>
+                                                             <span className="text-sm md:text-lg text-white font-medium">
+                                                                    Getting in Gear —<span className="block md:inline"> Mastering the Basics</span>
+                                                                </span>
                                                             </div>
                                                             <ChevronDown className="h-4 w-4 text-white" />
                                                         </div>
 
                                                         <div className="bg-[#FF8D8D] rounded-lg p-4 flex items-center justify-between">
                                                             <div className="flex items-center space-x-3">
-                                                                <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-sm font-medium">DAY 1</span>
-                                                                <span className="text-white font-medium">Getting in Gear — Mastering the Basics</span>
+                                                                <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">DAY 1</span>
+                                                              <span className="text-sm md:text-lg text-white font-medium">
+                                                                    Getting in Gear —<span className="block md:inline"> Mastering the Basics</span>
+                                                                </span>
                                                             </div>
                                                             <ChevronDown className="h-4 w-4 text-white" />
                                                         </div>
