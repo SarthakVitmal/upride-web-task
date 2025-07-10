@@ -15,6 +15,7 @@ export default function CourseSelection() {
     const [couponCode, setCouponCode] = useState("")
     const [appliedCoupon, setAppliedCoupon] = useState("")
     const [activeTab, setActiveTab] = useState("step2")
+    const [showAllDays, setShowAllDays] = useState(false)
 
     // Collapsible states
     const [beginnerExpanded, setBeginnerExpanded] = useState(true)
@@ -43,6 +44,16 @@ export default function CourseSelection() {
                     day: 3,
                     title: "Shifting Gears Smoothly",
                     description: "Master gear shifting patterns and rev matching"
+                },
+                {
+                    day: 4,
+                    title: "Turning and Cornering",
+                    description: "Learn proper body positioning and turning techniques"
+                },
+                {
+                    day: 5,
+                    title: "Emergency Braking",
+                    description: "Master quick stops in various road conditions"
                 }
             ]
         },
@@ -61,6 +72,16 @@ export default function CourseSelection() {
                     day: 2,
                     title: "Cornering Mastery",
                     description: "Perfect your body positioning and line selection"
+                },
+                {
+                    day: 3,
+                    title: "Highway Riding Skills",
+                    description: "Learn safe techniques for highway speeds"
+                },
+                {
+                    day: 4,
+                    title: "Night Riding",
+                    description: "Master riding in low-light conditions"
                 }
             ]
         },
@@ -77,11 +98,18 @@ export default function CourseSelection() {
         }
     }
 
+    const visibleDays =
+        selectedCourse !== "custom" && "days" in courses[selectedCourse]
+            ? (showAllDays
+                ? courses[selectedCourse].days
+                : courses[selectedCourse].days.slice(0, 3))
+            : []
+
     // Pricing calculations
     const basePrice = courses[selectedCourse].price
     const licenseFee = licenseAddon ? 2500 : 0
     const subtotal = basePrice + licenseFee
-
+    
     // Apply 10% discount if coupon is applied
     const discount = appliedCoupon === "LEARN10" ? subtotal * 0.1 : 0
     const gstRate = 0.18
@@ -90,6 +118,7 @@ export default function CourseSelection() {
 
     const handleCourseSelect = (course: typeof selectedCourse) => {
         setSelectedCourse(course)
+        setShowAllDays(false)
         // Auto-expand the selected course section
         if (course === "beginner") {
             setBeginnerExpanded(true)
@@ -117,6 +146,10 @@ export default function CourseSelection() {
 
     const handleTabChange = (tab: string) => {
         setActiveTab(tab)
+    }
+
+    const toggleShowAllDays = () => {
+        setShowAllDays(!showAllDays)
     }
 
     return (
@@ -190,33 +223,47 @@ export default function CourseSelection() {
 
                                                 <CollapsibleContent className="space-y-3">
                                                     <div className="space-y-2">
-                                                        {courses.beginner.days.map((day, index) => (
-                                                            <div
-                                                                key={day.day}
-                                                                className="rounded-xl p-4 flex items-center justify-between"
-                                                                style={{
-                                                                    background: index % 2 === 0
-                                                                        ? "linear-gradient(90deg, #FF8D8D 0%, #FFEBEC 200%)"
-                                                                        : "linear-gradient(90deg, #E73131 0%, #FFEBEC 200%)"
-                                                                }}
-                                                            >
-                                                                <div className="flex items-center space-x-3">
-                                                                    <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">DAY {day.day}</span>
-                                                                    <div>
-                                                                        <span className="text-sm md:text-lg text-white font-medium">
-                                                                            {day.title}
-                                                                        </span>
-                                                                        <p className="text-xs text-white opacity-90">{day.description}</p>
+                                                        {visibleDays.map((day, index) => (
+                                                            <Collapsible key={day.day}>
+                                                                <div
+                                                                    className="rounded-xl p-4 flex items-center justify-between"
+                                                                    style={{
+                                                                        background: index % 2 === 0
+                                                                            ? "linear-gradient(90deg, #FF8D8D 0%, #FFEBEC 200%)"
+                                                                            : "linear-gradient(90deg, #E73131 0%, #FFEBEC 200%)"
+                                                                    }}
+                                                                >
+                                                                    <div className="flex items-center space-x-3">
+                                                                        <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">DAY {day.day}</span>
+                                                                        <div>
+                                                                            <span className="text-sm md:text-lg text-white font-medium">
+                                                                                {day.title}
+                                                                            </span>
+                                                                            <p className="text-xs text-white opacity-90">{day.description}</p>
+                                                                        </div>
                                                                     </div>
+                                                                    <CollapsibleTrigger asChild>
+                                                                        <Button variant="ghost" size="sm" className="text-white hover:text-white hover:bg-transparent">
+                                                                            <ChevronDown className="h-4 w-4" />
+                                                                        </Button>
+                                                                    </CollapsibleTrigger>
                                                                 </div>
-                                                                <ChevronDown className="h-4 w-4 text-white" />
-                                                            </div>
+                                                                <CollapsibleContent className="transition-all duration-500 px-4 py-2 bg-white bg-opacity-20 rounded-b-lg">
+                                                                    <p className="text-black text-sm">Additional details about this session would appear here when expanded.</p>
+                                                                </CollapsibleContent>
+                                                            </Collapsible>
                                                         ))}
                                                     </div>
 
-                                                    <Button variant="link" className="text-red-500 p-0 h-auto font-normal">
-                                                        View More <ArrowRight className="h-4 w-4 ml-1" />
-                                                    </Button>
+                                                    {courses.beginner.days.length > 3 && (
+                                                        <Button 
+                                                            variant="link" 
+                                                            className="text-red-500 p-0 h-auto font-normal"
+                                                            onClick={toggleShowAllDays}
+                                                        >
+                                                            {showAllDays ? "Show Less" : "View More"} <ArrowRight className="h-4 w-4 ml-1" />
+                                                        </Button>
+                                                    )}
                                                 </CollapsibleContent>
                                             </Collapsible>
                                         </div>
@@ -244,32 +291,49 @@ export default function CourseSelection() {
                                                         </Button>
                                                     </CollapsibleTrigger>
                                                 </div>
-                                                <CollapsibleContent className="space-y-3 ">
+                                                <CollapsibleContent className="space-y-3">
                                                     <p className="text-gray-700">{courses.advanced.description}</p>
                                                     <div className="space-y-2 mt-3">
-                                                        {courses.advanced.days.map((day, index) => (
-                                                            <div
-                                                                key={day.day}
-                                                                className="rounded-xl p-4 flex items-center justify-between"
-                                                                style={{
-                                                                    background: index % 2 === 0
-                                                                        ? "linear-gradient(90deg, #FF8D8D 0%, #FFEBEC 200%)"
-                                                                        : "linear-gradient(90deg, #E73131 0%, #FFEBEC 200%)"
-                                                                }}
-                                                            >
-                                                                <div className="flex items-center space-x-3">
-                                                                    <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">DAY {day.day}</span>
-                                                                    <div>
-                                                                        <span className="text-sm md:text-lg text-white font-medium">
-                                                                            {day.title}
-                                                                        </span>
-                                                                        <p className="text-xs text-white opacity-90">{day.description}</p>
+                                                        {visibleDays.map((day, index) => (
+                                                            <Collapsible key={day.day}>
+                                                                <div
+                                                                    className="rounded-xl p-4 flex items-center justify-between"
+                                                                    style={{
+                                                                        background: index % 2 === 0
+                                                                            ? "linear-gradient(90deg, #FF8D8D 0%, #FFEBEC 200%)"
+                                                                            : "linear-gradient(90deg, #E73131 0%, #FFEBEC 200%)"
+                                                                    }}
+                                                                >
+                                                                    <div className="flex items-center space-x-3">
+                                                                        <span className="bg-inherit border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">DAY {day.day}</span>
+                                                                        <div>
+                                                                            <span className="text-sm md:text-lg text-white font-medium">
+                                                                                {day.title}
+                                                                            </span>
+                                                                            <p className="text-xs text-white opacity-90">{day.description}</p>
+                                                                        </div>
                                                                     </div>
+                                                                    <CollapsibleTrigger asChild>
+                                                                        <Button variant="ghost" size="sm" className="text-white hover:text-white hover:bg-transparent">
+                                                                            <ChevronDown className="h-4 w-4" />
+                                                                        </Button>
+                                                                    </CollapsibleTrigger>
                                                                 </div>
-                                                                <ChevronDown className="h-4 w-4 text-white" />
-                                                            </div>
+                                                                <CollapsibleContent className="px-4 py-2 bg-white bg-opacity-20 rounded-b-lg">
+                                                                    <p className="text-white text-sm">Additional details about this session would appear here when expanded.</p>
+                                                                </CollapsibleContent>
+                                                            </Collapsible>
                                                         ))}
                                                     </div>
+                                                    {courses.advanced.days.length > 3 && (
+                                                        <Button 
+                                                            variant="link" 
+                                                            className="text-red-500 p-0 h-auto font-normal"
+                                                            onClick={toggleShowAllDays}
+                                                        >
+                                                            {showAllDays ? "Show Less" : "View More"} <ArrowRight className="h-4 w-4 ml-1" />
+                                                        </Button>
+                                                    )}
                                                 </CollapsibleContent>
                                             </Collapsible>
                                         </div>
