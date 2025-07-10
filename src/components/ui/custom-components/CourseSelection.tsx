@@ -82,7 +82,6 @@ export default function CourseSelection() {
     const handleCourseSelect = (course: typeof selectedCourse) => {
         setSelectedCourse(course)
         setShowAllDays(false)
-        // Auto-expand the selected course section
         if (course === "beginner") {
             setBeginnerExpanded(true)
             setAdvancedExpanded(false)
@@ -99,7 +98,6 @@ export default function CourseSelection() {
     }
 
     const handleApplyCoupon = () => {
-        // Simple coupon validation
         if (couponCode.trim() === "LEARN10") {
             setAppliedCoupon(couponCode)
         } else {
