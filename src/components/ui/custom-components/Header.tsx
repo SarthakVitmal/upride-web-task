@@ -41,7 +41,6 @@ export default function CourseSelection() {
             name: "Advanced Ace",
             sessions: 5,
             price: 6000,
-            description: "Refine your technique.",
             days: [
                 { day: 1, title: "Braking" },
                 { day: 2, title: "Cornering" },
@@ -170,12 +169,16 @@ export default function CourseSelection() {
                                                         className="flex items-center space-x-5 cursor-pointer"
                                                         onClick={() => handleCourseSelect("beginner")}
                                                     >
-                                                        <div className={`w-9 h-6 rounded-full flex items-center justify-center 
+                                                        <div className={`w-6 md:w-6 h-6 rounded-full flex items-center justify-center 
                                                             ${selectedCourse === "beginner" ? "bg-red-500" : "border-2 border-red-300 bg-white"}`}>
                                                             {selectedCourse === "beginner" && <Check className="h-4 w-4 text-white" />}
                                                         </div>
-                                                        <span className="font-medium text-gray-800 text-[18px]">
-                                                            {courses.beginner.name} – <strong className="text-bold">{courses.beginner.sessions} Sessions to Mastery</strong>
+                                                        <span className="font-medium text-gray-800 text-[18px] flex flex-col sm:flex-row">
+                                                            {courses.beginner.name}
+                                                            <span className="block sm:inline">
+                                                                {/* On mobile, this will be on a new line */}
+                                                                <span className="sm:ml-1">– <strong>{courses.beginner.sessions} Sessions to Mastery</strong></span>
+                                                            </span>
                                                         </span>
                                                     </div>
                                                     <CollapsibleTrigger asChild>
@@ -238,15 +241,19 @@ export default function CourseSelection() {
                                             <Collapsible open={advancedExpanded} onOpenChange={setAdvancedExpanded}>
                                                 <div className="flex items-center justify-between">
                                                     <div
-                                                        className="flex items-center space-x-3 cursor-pointer"
+                                                        className="flex items-center space-x-5 cursor-pointer"
                                                         onClick={() => handleCourseSelect("advanced")}
                                                     >
                                                         <div className={`w-6 h-6 rounded-full flex items-center justify-center 
                                                             ${selectedCourse === "advanced" ? "bg-red-500" : "border-2 border-red-300 bg-white"}`}>
                                                             {selectedCourse === "advanced" && <Check className="h-4 w-4 text-white" />}
                                                         </div>
-                                                        <span className="font-medium text-gray-800 text-[18px]">
-                                                            {courses.advanced.name} – <strong>{courses.advanced.sessions}<br></br> Sessions to Perfection</strong>
+                                                        <span className="font-medium text-gray-800 text-[18px] flex flex-col sm:flex-row">
+                                                            {courses.advanced.name}
+                                                            <span className="block sm:inline">
+                                                                {/* On mobile, this will be on a new line */}
+                                                                <span className="sm:ml-1">– <strong>{courses.advanced.sessions} Sessions to Perfection</strong></span>
+                                                            </span>
                                                         </span>
                                                     </div>
                                                     <CollapsibleTrigger asChild>
@@ -256,7 +263,6 @@ export default function CourseSelection() {
                                                     </CollapsibleTrigger>
                                                 </div>
                                                 <CollapsibleContent className="space-y-3">
-                                                    <p className="text-gray-700">{courses.advanced.description}</p>
                                                     <div className="space-y-2 mt-3">
                                                         {visibleDays.map((day, index) => (
                                                             <Collapsible key={day.day}>
